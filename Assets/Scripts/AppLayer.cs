@@ -60,14 +60,14 @@ public class AppLayer : MonoBehaviour
     {
         if (appType == AppType.Calculator) 
         {
-            if (GetComponentInChildren <SimpleCalculator>() == null)
+            if (GetComponentInChildren <Calculator>() == null)
             {
                 GameObject panel = new GameObject(
                     "Panel",
                     typeof(RectTransform),
                     typeof(CanvasRenderer),
                     typeof(Image),
-                    typeof(SimpleCalculator)
+                    typeof(Calculator)
                 );
 
                 panel.transform.SetParent(transform, false);
@@ -78,7 +78,7 @@ public class AppLayer : MonoBehaviour
                 Rect.offsetMin = new Vector2(0, 0);  
                 Rect.offsetMax = new Vector2(0, -20);
 
-                var calculator = panel.GetComponent<SimpleCalculator>();
+                var calculator = panel.GetComponent<Calculator>();
                 calculator.appLayer = GetComponent<AppLayer>();
                 calculator.buttonPrefab = buttonPrefab;
                 calculator.font = font;
