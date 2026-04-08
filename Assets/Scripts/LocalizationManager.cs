@@ -11,6 +11,8 @@ public class LocalizationManager : MonoBehaviour
 
     private Dictionary<string, Dictionary<string, string>> localizedText;
 
+    public event Action OnLanguageChange;
+
     private void Awake()
     {
         currentLanguage = defaultLanguage;
@@ -78,6 +80,7 @@ public class LocalizationManager : MonoBehaviour
             currentLanguage = lang;
         else
             Debug.LogWarning("язык не найден: " + lang);
+        OnLanguageChange?.Invoke();
     }
     public Dictionary<string, string> GetAllLanguages()
     {

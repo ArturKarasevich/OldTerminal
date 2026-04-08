@@ -1,145 +1,44 @@
 {
-  "ru": {
-    "name": "Русский",
-    "fontSize": 42,
-    "logFontSize": 27,
-    
-    "pause": "Пауза",
-    "textSpeed": "Скорость текста",
-    "language": "Язык",
-    "slotName": "Слот сохранения",
-    "autosaveName": "Автосохранение",
+    "ru": {
+        "name": "Русский",
+        "fontSize": 42,
 
-    "errorMessage": "СИСТЕМА ПОВРЕЖДЕНА",
-    "firstText": "Мой брат умер от рака несколько недель назад. Он говорил, что вложился в какую-то криптовалюту, стоит поискать пароль кошелька на его ноутбуке",
-    
-    "projectsDir": "projects",
-    "musicDir": "music",
-    "notesDir": "notes",
-    "walletProtectedDir": "wallet_protected",
-    "recycleBinDir": "recycle_bin",
-    
-    "seeProjects": "Пока стоит зайти в папку с проектами — это логичный первый шаг.",
-    "projectsFile1": "build.exe",
-    "projectsFile2": "sys_fragment.tmp",
-    "projectsFile3": "boot.log",
-    "projectsFile4": "debug_report.frag",
-    
-    "seeLogFile": "Файл не поддерживается.",
-    "restoreLog": "Нужно восстановить этот лог, чтобы понять последовательность сбоя. Кажется, тут перепутаны строки.",
-    
-    "logLine1": "[00:00] ЗАПУСК СИСТЕМЫ",
-    "logLine2": "[00:01] ИНИЦИАЛИЗАЦИЯ ДРАЙВЕРОВ",
-    "logLine3": "[00:05] ПРЕДУПРЕЖДЕНИЕ: ВТОРЖЕНИЕ",
-    "logLine4": "[00:09] ОШИБКА: Провал контрольной суммы",
-    "logLine5": "[00:12] СИСТЕМНОЕ ПОВРЕЖДЕНИЕ: КРАХ",
-    "logLine6": "[00:13] ОСТАНОВКА",
-    
-    "seeMusicFolder": "Думаю, стоит зайти в папку музыки.",
-    "musicNotReady": "На данный момент эта мини-игра недоступна. Нажмите любую кнопку, чтобы продолжить.",
-    
-    "seeNotesFolder": "Наверное, стоит зайти в заметки. Может, брат оставил там какие-то ключи.",
-    
-    "exploreOtherFolders": "Это не то, что мне нужно. Мне нужно сосредоточиться на папках, которые я не проверил.",
-    
-    
-    
-    "hackInstruction": "HACK: Введите последовательность узлов для обхода защиты.",
-    "nodeSynced": "Узел синхронизирован.",
-    "nodeFailure": "Синхронизация провалена. Сброс последовательности.",
-    "partASuccessMessage": "Защита временно отключена.",
-    "partAScriptFragment": "ФРАГМЕНТ A: 'Взлом завершен. Теперь нужно найти ЧЕК-СУММУ для доступа к ключу.'",
-    
-    
-    "decryptInstruction": "DECRYPT: Рассчитайте сумму выделенных HEX-значений и введите ее в десятичном формате.",
-    "decryptFailure": "Неверная контрольная сумма. Пересчитайте HEX-значения.",
-    "decryptInputError": "Ошибка ввода. Требуется десятичное число.",
-    "decryptSuccessMessage": "Checksum принят. Получен второй фрагмент.",
-    "partBScriptFragment": "ФРАГМЕНТ B: 'Ключ был в Корзине. Я удалил его, но он вернется после восстановления. Мне нужен пароль 135'.",
-    
-    
-    "recycleSuccess": "Найдена ссылка на удаленный файл. Что-то, связанное с кошельком. Теперь он снова должен быть доступен.",
-    "exploreWalletNow": "Файл восстановлен. Мне нужно немедленно проверить кошелек, чтобы увидеть, что там.",
-    "enterPasswordFirst": "Панель ввода пароля уже открыта. Введите пароль.",
-    
-    "walletPasswordPrompt": "Поищите пароль в файлах игры.",
-    
-    "passwordIncorrect": "Неверный пароль. Поищите пароль в файлах игры.",
-    "passwordCorrect": "'Я знаю, ты искал ключ. Но здесь его нет. Береги то, что в твоем сердце.'",
-    
-    "successFinal": "Все эти технические коды были лишь маскировкой. Главное — это у меня остались воспоминания о брате."
-  },
-  
-  
-  
-  "en": {
-    "name": "English",
-    "fontSize": 42,
-    "logFontSize": 27,
+        "pause": "Пауза",
+        "textSpeed": "Скорость текста",
+        "language": "Язык",
+        "slotName": "Слот сохранения",
+        "autosaveName": "Автосохранение",
 
-    "pause": "Pause",
-    "textSpeed": "Text speed",
-    "language": "Language",
-    "slotName": "Save Slot",
-    "autosaveName": "Autosave",
-    
-    "errorMessage": "SYSTEM DAMAGED",
-    "firstText": "My brother died of cancer a few weeks ago. He said he invested in some cryptocurrency; I should look for the wallet password on his laptop.",
-    
-    "projectsDir": "projects",
-    "musicDir": "music",
-    "notesDir": "notes",
-    "walletProtectedDir": "wallet_protected",
-    "recycleBinDir": "recycle_bin",
-    
-    "seeProjects": "I should check the projects folder first—it's the logical first step.",
-    "projectsFile1": "build.exe",
-    "projectsFile2": "sys_fragment.tmp",
-    "projectsFile3": "boot.log",
-    "projectsFile4": "debug_report.frag",
-    
-    "seeLogFile": "File not supported.",
-    "restoreLog": "I need to restore this log to understand the sequence of the failure. The lines seem to be mixed up.",
-    
-    "logLine1": "[00:00] SYSTEM STARTUP",
-    "logLine2": "[00:01] DRIVER INITIALIZATION",
-    "logLine3": "[00:05] WARNING: INTRUSION DETECTED",
-    "logLine4": "[00:09] ERROR: Checksum failed",
-    "logLine5": "[00:12] SYSTEM CORRUPTION: CRASH",
-    "logLine6": "[00:13] SHUTDOWN",
+        "wrongpassword": "Неверный пароль",
+        "enterpassword": "Введите пароль",
+        "succesfullogin": "Успешный вход",
+        "login": "Вход",
+        "firstPasswordSpeech0": "Пароль. Ну да.",
+        "firstPasswordSpeech1": "…",
+        "firstPasswordSpeech2": "У него был пароль даже на заметках. Хотя,там скорее всего опять какая-нибудь ,ерунда.",
+        "firstPasswordSpeech3": "…",
+        "firstPasswordSpeech4": "Что ты туда ставил обычно... Не работа. Не кот.",
+        "firstPasswordSpeech5": "Блин. Да ладно. Ты ведь уже делал эту глупость. День рождения Цоя.",
+        "firstPasswordSpeech6": "21061962"
 
-    "seeMusicFolder": "I think it's worth checking the music folder.",
-    "musicNotReady": "This mini-game is currently unavailable. Press any key to continue.",
-    
-    "seeNotesFolder": "I should probably check the notes. Maybe my brother left some clues there.",
-    
-    "exploreOtherFolders": "This is not what I'm looking for. I need to focus on the folders I haven't checked.",
-    
-    
-    
-    "hackInstruction": "HACK: Enter the node sequence to bypass the security. Correct sequence: 0, 3, 1, 4, 2.",
-    "nodeSynced": "Node synchronized.",
-    "nodeFailure": "Synchronization failed. Resetting sequence.",
-    "partASuccessMessage": "Memory Map security temporarily disabled.",
-    "partAScriptFragment": "FRAGMENT A: 'Hack complete. Now I need to find the CHECKSUM to access the key.'",
-    
-    
-    "decryptInstruction": "DECRYPT: Calculate the sum of the highlighted HEX values and enter it in decimal format.",
-    "decryptFailure": "Incorrect Checksum. Recalculate the HEX values.",
-    "decryptInputError": "Input error. Decimal number required.",
-    "decryptSuccessMessage": "Checksum accepted. Second fragment retrieved.",
-    "partBScriptFragment": "FRAGMENT B: 'The key was in the Recycle Bin. I deleted it, but it will return after recovery. I need the password 135'.",
-    
-    
-    "recycleSuccess": "A link to a deleted file has been found. Something related to the wallet. It should be available again now.",
-    "exploreWalletNow": "File restored. I need to check the wallet immediately to see what's inside.",
-    "enterPasswordFirst": "The password input panel is already open. Enter the password.",
-    
-    "walletPasswordPrompt": "Look for the password in the game files.",
-    
-    "passwordIncorrect": "Incorrect password. Look for the password in the game files.",
-    "passwordCorrect": "'I know you were looking for the key. But it's not here. Guard what's in your heart.'",
-    
-    "successFinal": "All these technical codes were just a disguise. The most important thing is the memories of my brother that remain."
-  }
+    },
+
+
+
+    "en": {
+        "name": "English",
+        "fontSize": 42,
+        "logFontSize": 27,
+
+        "pause": "Pause",
+        "textSpeed": "Text speed",
+        "language": "Language",
+        "slotName": "Save Slot",
+        "autosaveName": "Autosave",
+
+        "wrongpassword": "Wrong password",
+        "enterpassword": "Enter password",
+        "succesfullogin": "Succesfull log in",
+        "login": "Log in"
+    }
 }
