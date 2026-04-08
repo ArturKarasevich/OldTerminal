@@ -13,7 +13,7 @@ public class MusicPlayer : MonoBehaviour, IPointerDownHandler
         public string artist;
         public AudioClip clip;
     }
-
+    public Laptop laptop;
     [Header("Data")]
     public List<Track> playlist;
     private int currentTrackIndex = 0;
@@ -33,6 +33,14 @@ public class MusicPlayer : MonoBehaviour, IPointerDownHandler
 
     void Start()
     {
+        GameObject go = GameObject.FindWithTag("Laptop");
+        if (go != null)
+        {
+            laptop = go.GetComponent<Laptop>();
+            laptop.player = this;
+        }
+        else
+            print("Ноут не найден");
         LoadTrack(0);
         SetVolume();
     }
@@ -94,6 +102,18 @@ public class MusicPlayer : MonoBehaviour, IPointerDownHandler
     {
         if (audioSource.isPlaying) audioSource.Pause();
         else audioSource.UnPause();
+        UpdatePlayPauseUI();
+    }
+
+    public void Pause()
+    {
+        audioSource.Pause();
+        UpdatePlayPauseUI();
+    }
+
+    public void Play()
+    {
+        audioSource.UnPause();
         UpdatePlayPauseUI();
     }
 

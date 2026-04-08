@@ -150,7 +150,7 @@ public class Explorer : MonoBehaviour
                 return "\"Вспомнил, как мы после универа ночью сидели на крыше с саней, после универа. Холодно было так что пальцы не слушались, а он все косился на люк и боялся,  что его ветром захлопнет и нас оставят там до утра. Я тогда сказал, что хочу однажды сорваться и уехать в горы. Просто взять и  исчезнуть. Без звонков, дедлайнов, бесконечных \"надо. Он посмотрел на меня так будто  я не в горы собрался, а в космос без скафандра. -Егор а меня и дома все устраивает. Кот. Свой угол. Ноут.\r\nИ я ведь правда за него рад Честно.\r\nЕсть люди, которые умеют быть счастливыми в коробке. Они обживают ее, ставят кружку\r\nна привычное место, заводят кота, покупают лампу потеплее - и им хорошо.\r\nНо я так не могу. Мне в какой-то момент даже тишина начинает напоминать клетку.";
 
             case "atlas_present.txt":
-                return "Завтра эта гребанная презентация. Олег весь день ходит за мной и зудит.\r\n-Егор, надень рубашку.\r\n-Егор, включи камеру.\r\n-Егор, улыбайся!\r\n-Они хотят видеть лидера разработки.\r\nЗачем? Если они хотят видеть лидера разработки, то пусть смотрят на код и\r\nархитектуру. Но нет. Им нужно лицо. Им мало того что система работает, им надо чтобы она\r\nеще и улыбалась. А я снова должен делать вид что мне это нравится. Я программист.\r\nНе шоумен.";
+                return "Завтра эта гребанная презентация. Дмитрий весь день ходит за мной и зудит.\r\n-Егор, надень рубашку.\r\n-Егор, включи камеру.\r\n-Егор, улыбайся!\r\n-Они хотят видеть лидера разработки.\r\nЗачем? Если они хотят видеть лидера разработки, то пусть смотрят на код и\r\nархитектуру. Но нет. Им нужно лицо. Им мало того что система работает, им надо чтобы она\r\nеще и улыбалась. А я снова должен делать вид что мне это нравится. Я программист.\r\nНе шоумен.";
             case "pismo_v_korzine.txt":
                 return "Письмо об увольнении до сих пор лежит в корзине. Даже не удалил.\r\nВесь день чинил чужие ошибки, слушал чужую уверенность, кивал на чужие идеи,\r\nа потом снова открыл корзину и посмотрел на файл.\r\nБудто это не документ, а аварийный выход. Самое мерзкое, что я уже не понимаю\r\nя хочу уйти потому что мне плохо, или потому что слишком долго надеялся что станет лучше.";
             case "zloy1.txt":
@@ -210,14 +210,30 @@ public class Explorer : MonoBehaviour
 
         //C
 
+        FileNode users = new FileNode("Users", NodeType.Folder, rootC);
+        rootC.children.Add(users);
+        FileNode desktop = new FileNode("Desktop", NodeType.Folder, users);
+        users.children.Add(desktop);
+        desktop.children.Add(new FileNode("cmd.bat", NodeType.File, desktop));
+        desktop.children.Add(new FileNode("nochnoy_commit.txt", NodeType.File, desktop));
+        desktop.children.Add(new FileNode("README_ME_FIRST.txt", NodeType.File, desktop));
+
+        FileNode documents = new FileNode("Documents", NodeType.Folder, users);
+        users.children.Add(documents);
+        FileNode notes = new FileNode("Notes", NodeType.Folder, documents);
+        documents.children.Add(notes);
+        notes.children.Add(new FileNode("na_krishe_doma_tvoego.txt", NodeType.File, notes));
+        notes.children.Add(new FileNode("atlas_present.txt", NodeType.File, notes));
+        notes.children.Add(new FileNode("pismo_v_korzine.txt", NodeType.File, notes));
+        notes.children.Add(new FileNode("zloy1.txt", NodeType.File, notes));
+        notes.children.Add(new FileNode("zloy2.txt", NodeType.File, notes));
+        FileNode work = new FileNode("Work", NodeType.Folder, documents);
+        documents.children.Add(notes);
+        notes.children.Add(new FileNode("game1.exe", NodeType.File, notes));
+
         FileNode trashbox = new FileNode("Корзина", NodeType.Folder, rootC);
         trashbox.children.Add(new FileNode("uvolnenie.txt", NodeType.File, trashbox));  
         rootC.children.Add(trashbox);
-        rootC.children.Add(new FileNode("na_krishe_doma_tvoego.txt", NodeType.File, rootC));
-        rootC.children.Add(new FileNode("atlas_present.txt", NodeType.File, rootC));
-        rootC.children.Add(new FileNode("pismo_v_korzine.txt", NodeType.File, rootC));
-        rootC.children.Add(new FileNode("zloy1.txt", NodeType.File, rootC));
-        rootC.children.Add(new FileNode("zloy2.txt", NodeType.File, rootC));
         rootC.children.Add(new FileNode("nochnoy_commit.txt", NodeType.File, rootC));
         rootC.children.Add(new FileNode("ot_sebia.txt", NodeType.File, rootC));
         rootC.children.Add(new FileNode("na_kurilke.txt", NodeType.File, rootC));

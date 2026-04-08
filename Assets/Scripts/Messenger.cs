@@ -15,12 +15,14 @@ public class Messenger : MonoBehaviour
     private TextMeshProUGUI leftChoiceText, rightChoiceText;
 
     private readonly string[] chatList = {
-        "Макс", "Саня", "Мама", "Дмитрий", "Олег", "Sushi&Pizza", "Ольга Владимировна", "Атлас/main"
+        "Макс", "Саня", "Мама", "Олег", "Sushi&Pizza", "Ольга Владимировна", "Атлас/main", "Дмитрий Анатольевич"
     };
 
     private Dictionary<string, List<MessageData>> chatHistory = new Dictionary<string, List<MessageData>>();
+    private List<GameObject> btnList = new List<GameObject>();
     private string activeChat = "";
     private bool maxDialogueStarted = false;
+    public bool typing = false;
 
     public TMP_FontAsset font;
 
@@ -40,7 +42,7 @@ public class Messenger : MonoBehaviour
         {
             appLayer.sizeDelta = new Vector2(600, 450);
             appLayer.appMinSize = new Vector2(600, 450);
-            appLayer.color = new Color(31, 31, 31);
+            appLayer.color = new Color(0.21f, 0.21f, 0.21f);
         }
 
         BuildUI();
@@ -54,6 +56,291 @@ public class Messenger : MonoBehaviour
         {
             chatHistory.Add(contact, new List<MessageData>());
         }
+        chatHistory["Атлас/main"].Add(new MessageData
+        {
+            sender = "Егор",
+            text = "Почти готово",
+            time = "",
+            isPlayer = true
+        });
+        chatHistory["Атлас/main"].Add(new MessageData
+        {
+            sender = "Макс",
+            text = "Я графики обновил",
+            time = ""
+        });
+        chatHistory["Атлас/main"].Add(new MessageData
+        {
+            sender = "Егор",
+            text = "Видел",
+            time = "",
+            isPlayer = true
+        });
+        chatHistory["Атлас/main"].Add(new MessageData
+        {
+            sender = "Макс",
+            text = "Ну и?",
+            time = ""
+        });
+        chatHistory["Атлас/main"].Add(new MessageData
+        {
+            sender = "Егор",
+            text = "Я их переделал",
+            time = "",
+            isPlayer = true
+        });
+        chatHistory["Атлас/main"].Add(new MessageData
+        {
+            sender = "Макс",
+            text = "Серьезно?",
+            time = ""
+        });
+        chatHistory["Атлас/main"].Add(new MessageData
+        {
+            sender = "Егор",
+            text = "Да",
+            time = "",
+            isPlayer = true
+        });
+        chatHistory["Атлас/main"].Add(new MessageData
+        {
+            sender = "Макс",
+            text = "Можно было хотя бы сказать",
+            time = ""
+        });
+        chatHistory["Атлас/main"].Add(new MessageData
+        {
+            sender = "Егор",
+            text = "Говорю сейчас",
+            time = "",
+            isPlayer = true
+        });
+        chatHistory["Атлас/main"].Add(new MessageData
+        {
+            sender = "Макс",
+            text = "У тебя все не так, если не ты сделал",
+            time = ""
+        });
+        chatHistory["Атлас/main"].Add(new MessageData
+        {
+            sender = "Егор",
+            text = "Если бы я оставил как есть, мы бы это не сдали",
+            time = "",
+            isPlayer = true
+        });
+        chatHistory["Атлас/main"].Add(new MessageData
+        {
+            sender = "Макс",
+            text = "Нормально там все было",
+            time = ""
+        });
+        chatHistory["Атлас/main"].Add(new MessageData
+        {
+            sender = "Егор",
+            text = "Нет",
+            time = "",
+            isPlayer = true
+        });
+        chatHistory["Атлас/main"].Add(new MessageData
+        {
+            sender = "Дмитрий",
+            text = "Так, спокойно.",
+            time = ""
+        });
+        chatHistory["Атлас/main"].Add(new MessageData
+        {
+            sender = "Дмитрий",
+            text = "Сначала заканчиваем.\r\n",
+            time = ""
+        });
+        chatHistory["Атлас/main"].Add(new MessageData
+        {
+            sender = "Егор",
+            text = "Я вообще-то тоже работаю",
+            time = "",
+            isPlayer = true
+        });
+        chatHistory["Атлас/main"].Add(new MessageData
+        {
+            sender = "Макс",
+            text = "Угу",
+            time = ""
+        });
+        chatHistory["Атлас/main"].Add(new MessageData
+        {
+            sender = "Дмитрий",
+            text = "К утру мне нужен результат.",
+            time = ""
+        });
+
+
+        chatHistory["Дмитрий Анатольевич"].Add(new MessageData
+        {
+            sender = "",
+            text = "Данные повреждены",
+            time = ""
+        });
+
+
+        chatHistory["Дмитрий Анатольевич"].Add(new MessageData
+        {
+            sender = "Дмитрий",
+            text = "Егор, как продвигается Атлас?",
+            time = ""
+        });
+
+
+        chatHistory["Дмитрий Анатольевич"].Add(new MessageData
+        {
+            sender = "Егор",
+            text = "Почти готово",
+            time = "",
+            isPlayer = true
+        });
+
+        chatHistory["Дмитрий Анатольевич"].Add(new MessageData
+        {
+            sender = "Дмитрий",
+            text = "Хорошо. По срокам все помнишь?",
+            time = ""
+        });
+
+
+        chatHistory["Дмитрий Анатольевич"].Add(new MessageData
+        {
+            sender = "Егор",
+            text = "Да",
+            time = "",
+            isPlayer = true
+        });
+
+        chatHistory["Дмитрий Анатольевич"].Add(new MessageData
+        {
+            sender = "Дмитрий",
+            text = "Макс подключился?",
+            time = ""
+        });
+
+
+        chatHistory["Дмитрий Анатольевич"].Add(new MessageData
+        {
+            sender = "Егор",
+            text = "Формально да",
+            time = "",
+            isPlayer = true
+        });
+
+        chatHistory["Дмитрий Анатольевич"].Add(new MessageData
+        {
+            sender = "Дмитрий",
+            text = "Это как понимать?",
+            time = ""
+        });
+
+
+        chatHistory["Дмитрий Анатольевич"].Add(new MessageData
+        {
+            sender = "Егор",
+            text = "Примерно как звучит",
+            time = "",
+            isPlayer = true
+        });
+
+        chatHistory["Дмитрий Анатольевич"].Add(new MessageData
+        {
+            sender = "Дмитрий",
+            text = "Егор, без этого.",
+            time = ""
+        });
+
+
+        chatHistory["Дмитрий Анатольевич"].Add(new MessageData
+        {
+            sender = "Егор",
+            text = "Хорошо",
+            time = "",
+            isPlayer = true
+        });
+
+        chatHistory["Дмитрий Анатольевич"].Add(new MessageData
+        {
+            sender = "Дмитрий",
+            text = "Мне нужен результат. Остальное потом.",
+            time = ""
+        });
+
+        chatHistory["Дмитрий Анатольевич"].Add(new MessageData
+        {
+            sender = "",
+            text = "CRC mismatch / sector 914",
+            time = ""
+        });
+
+        chatHistory["Дмитрий Анатольевич"].Add(new MessageData
+        {
+            sender = "Дмитрий",
+            text = "По оплате. Никаких самостоятельных решений.",
+            time = ""
+        });
+
+
+        chatHistory["Дмитрий Анатольевич"].Add(new MessageData
+        {
+            sender = "Егор",
+            text = "В смысле",
+            time = "",
+            isPlayer = true
+        });
+
+        chatHistory["Дмитрий Анатольевич"].Add(new MessageData
+        {
+            sender = "Дмитрий",
+            text = "В прямом. Сначала сдача, потом распределение.",
+            time = ""
+        });
+
+
+        chatHistory["Дмитрий Анатольевич"].Add(new MessageData
+        {
+            sender = "Егор",
+            text = "А что я есть буду?",
+            time = "",
+            isPlayer = true
+        });
+
+        chatHistory["Дмитрий Анатольевич"].Add(new MessageData
+        {
+            sender = "Дмитрий",
+            text = "Сейчас не об этом.",
+            time = ""
+        });
+
+
+        chatHistory["Дмитрий Анатольевич"].Add(new MessageData
+        {
+            sender = "Егор",
+            text = "Именно об этом",
+            time = "",
+            isPlayer = true
+        });
+
+        chatHistory["Дмитрий Анатольевич"].Add(new MessageData
+        {
+            sender = "Дмитрий",
+            text = "Егор.",
+            time = ""
+        });
+
+        chatHistory["Дмитрий Анатольевич"].Add(new MessageData
+        {
+            sender = "Дмитрий",
+            text = "Не надо усложнять.",
+            time = ""
+        });
+
+
+
+
 
         chatHistory["Sushi&Pizza"].Add(new MessageData
         {
@@ -76,7 +363,7 @@ public class Messenger : MonoBehaviour
         GameObject sideBar = new GameObject("Sidebar", typeof(RectTransform), typeof(Image), typeof(VerticalLayoutGroup));
         sideBar.transform.SetParent(main.transform, false);
         sideBar.GetComponent<Image>().color = new Color(0.1f, 0.1f, 0.1f);
-        sideBar.AddComponent<LayoutElement>().preferredWidth = 150;
+        sideBar.AddComponent<LayoutElement>().flexibleWidth = .5f;
         var vGroup = sideBar.GetComponent<VerticalLayoutGroup>();
         vGroup.padding = new RectOffset(5, 5, 5, 5); vGroup.spacing = 5;
         vGroup.childControlWidth = true; vGroup.childForceExpandHeight = false;
@@ -110,6 +397,7 @@ public class Messenger : MonoBehaviour
         GameObject viewport = new GameObject("Viewport", typeof(RectTransform), typeof(Mask), typeof(Image));
         viewport.transform.SetParent(scrollGo.transform, false);
         Stretch(viewport.GetComponent<RectTransform>());
+        viewport.GetComponent<Image>().color = new Color(0.3f, 0, 0.25f, 1f);
 
         GameObject content = new GameObject("Content", typeof(RectTransform), typeof(VerticalLayoutGroup), typeof(ContentSizeFitter));
         content.transform.SetParent(viewport.transform, false);
@@ -140,6 +428,7 @@ public class Messenger : MonoBehaviour
 
     public void SelectChat(string name)
     {
+        if (typing) return;
         if (!chatHistory.ContainsKey(name)) return;
         activeChat = name;
         contactTitle.text = name;
@@ -147,12 +436,20 @@ public class Messenger : MonoBehaviour
 
         foreach (Transform child in chatContent) Destroy(child.gameObject);
         foreach (var msg in chatHistory[name]) SpawnMessageUI(msg);
+        foreach (GameObject button in btnList) button.GetComponent<Image>().color = new Color(1f, 1, 15f, 0.1f);
+
+        GameObject btn = GameObject.Find("Btn_"+name);
+        if (btn != null)
+        {
+            btn.GetComponent<Image>().color = new Color(0.3f, 0 , 0.25f, 1);
+        }
 
         if (name == "Макс" && !maxDialogueStarted) StartCoroutine(MaxSequence());
     }
 
     IEnumerator MaxSequence()
     {
+        typing = true;
         maxDialogueStarted = true;
         yield return new WaitForSeconds(1f);
         AddMessage("Макс", "Саня, я вижу ты в сети. Наконец-то!", "18:42");
@@ -179,7 +476,7 @@ public class Messenger : MonoBehaviour
     {
         GameObject msgGo = new GameObject("Msg", typeof(RectTransform), typeof(VerticalLayoutGroup), typeof(Image));
         msgGo.transform.SetParent(chatContent, false);
-        msgGo.GetComponent<Image>().color = data.isPlayer ? new Color(0.2f, 0.5f, 0.2f, 0.4f) : new Color(0.3f, 0.3f, 0.3f, 0.4f);
+        msgGo.GetComponent<Image>().color = data.isPlayer ? new Color(0.5f, 0.5f, 0.5f, 0.4f) : new Color(0.3f, 0.3f, 0.3f, 0.4f);
         var txt = CreateTMPText($"[{data.time}] {data.sender}: {data.text}", msgGo.transform, 14);
         txt.alignment = data.isPlayer ? TextAlignmentOptions.Right : TextAlignmentOptions.Left;
     }
@@ -193,6 +490,7 @@ public class Messenger : MonoBehaviour
         var t = CreateTMPText(name, btnGo.transform, 13);
         t.alignment = TextAlignmentOptions.Center;
         btnGo.GetComponent<Button>().onClick.AddListener(() => SelectChat(name));
+        btnList.Add(btnGo);
     }
 
     TextMeshProUGUI CreateChoiceButton(string label, Transform parent, int id)
@@ -206,6 +504,7 @@ public class Messenger : MonoBehaviour
             if (id == 1) AddMessage("Егор", leftChoiceText.text, "18:44", true);
             else AddMessage("Егор", rightChoiceText.text, "18:44", true);
             choicePanel.SetActive(false);
+            typing = false;
         });
         return t;
     }

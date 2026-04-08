@@ -20,7 +20,7 @@ public class PrologueText : MonoBehaviour
     {
         charDelay *= 2;
         next.SetActive(false);
-        next_text.color = new Color(1, 0.511f, 0.722f, 0);
+        next_text.color = new Color(1, 1, 1, 0);
         string txt = text.text;
         text.text = "";
         for (int i = 0; i < txt.Length; i++)
@@ -35,7 +35,7 @@ public class PrologueText : MonoBehaviour
         next.SetActive(true);
         for (float i = 0; i <= 1; i+=0.01f)
         {
-            next_text.color = new Color(1, 0.511f, 0.722f, i);
+            next_text.color = new Color(1, 1, 1, i);
             yield return new WaitForSeconds(colorDelay);
         }
     }

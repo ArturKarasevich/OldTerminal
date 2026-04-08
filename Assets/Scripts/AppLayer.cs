@@ -30,6 +30,9 @@ public class AppLayer : MonoBehaviour
     public Sprite background;
     public Font font;
     public TMP_FontAsset tmp_font;
+    public Sprite close;
+    public Sprite hide;
+    public Sprite full;
 
     public enum AppType 
     {
@@ -239,11 +242,11 @@ public class AppLayer : MonoBehaviour
         panelObj.GetComponent<WindowDragger>().windowTransform = transform.gameObject.GetComponent<RectTransform>();
         panelObj.GetComponent<WindowDragger>().enabled = true;
 
-        CreateCircleButton(panelObj.transform, 0);
-        GameObject hide = CreateCircleButton(panelObj.transform, 1);
+        GameObject hide = CreateCircleButton(panelObj.transform, 0);
         hide.GetComponent<Button>().onClick.AddListener(Hide);
-        GameObject full = CreateCircleButton(panelObj.transform, 2);
+        GameObject full = CreateCircleButton(panelObj.transform, 1);
         full.GetComponent<Button>().onClick.AddListener(Fullscreen);
+        CreateCircleButton(panelObj.transform, 2);
     }
 
     GameObject CreateCircleButton(Transform parent, int index)
@@ -257,9 +260,9 @@ public class AppLayer : MonoBehaviour
         Image img = btnObj.GetComponent<Image>();
         img.sprite = circleSprite;
 
-        if (index == 0) img.color = Color.red;
-        else if (index == 1) img.color = Color.yellow;
-        else img.color = Color.green;
+        if (index == 0) img.sprite = hide;
+        else if (index == 1) img.sprite = full;
+        else img.sprite = close;
         return btnObj;
     }
 
