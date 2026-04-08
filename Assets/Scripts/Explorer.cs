@@ -3,6 +3,9 @@ using UnityEngine.UI;
 using TMPro;
 using System.Collections.Generic;
 using System.Linq;
+using System;
+using Unity.Collections.LowLevel.Unsafe;
+using System.Collections;
 
 
 public class Explorer : MonoBehaviour
@@ -22,9 +25,17 @@ public class Explorer : MonoBehaviour
             this.parent = parent;
         }
     }
+    public GameObject recovery;
+    public TextMeshProUGUI dumpText;
+    public TextMeshProUGUI instructionText;
+    public TMP_InputField recoveryInput;
+    public GameObject errorMsg;
+    public GameObject succesMsg;
+    public GameObject accessDenied;
 
 
     public AppLayer notepadsapplayer;
+    public SceneController sceneController;
     public enum NodeType { Drive, Folder, File }
     [Header("Настройки UI")]
     public GameObject filePrefab;   
@@ -43,6 +54,10 @@ public class Explorer : MonoBehaviour
 
     void Start()
     {
+        accessDenied.SetActive(false);
+        recovery.SetActive(false);
+        errorMsg.SetActive(false);
+        succesMsg.SetActive(false);
         BuildFileSystem();
         if (backButton != null)
             backButton.onClick.AddListener(GoBack);
@@ -52,8 +67,15 @@ public class Explorer : MonoBehaviour
 
     void OpenDirectory(FileNode node)
     {
-        currentDir = node;
-        RefreshUI();
+        if (node.type == NodeType.Drive && node.name == "C:" && !sceneController.recoveryFound)
+        {
+            accessDenied.SetActive(true);
+        }
+        else
+        {
+            currentDir = node;
+            RefreshUI();
+        }
     }
 
     void GoBack()
@@ -103,15 +125,80 @@ public class Explorer : MonoBehaviour
             });
         }   
     }
+    public int cnt = 0;
+    public void errorOK()
+    {
+        cnt ++;
+        if (cnt == 31)
+        {
+            succesMsg.SetActive(true);
+        }
+    }
+    public void succesOK()
+    {
+        succesMsg.SetActive(false);
+        recovery.SetActive(false);
+        OpenDirectory(root);
+        sceneController.reboot();
+    }
+
+
+    public void Enter()
+    {
+        if (recoveryInput.text == "135")
+        {
+            errorMsg.SetActive(true);
+            StartCoroutine(showErrors());
+        }
+        else
+        {
+            recoveryInput.text = "";
+            instructionText.text = sceneController.localizationManager.GetText("decryptInstructionIfWA");
+        }
+    }
+
+    public IEnumerator showErrors()
+    {
+        for (int i = 1; i <= 30; i++)
+        {
+            yield return new WaitForSeconds(0.06f);
+            GameObject go = Instantiate(errorMsg.gameObject, errorMsg.transform.parent);
+            go.transform.position = new Vector3(errorMsg.transform.position.x + i * 10, errorMsg.transform.position.y - i * 8, errorMsg.transform.position.z);
+        }
+    }
 
     void OpenFile(FileNode file)
     {
-        Debug.Log("Открываем файл: " + file.name);
-        if (notepadsapplayer == null) return;
-        Notepad notepad = notepadsapplayer.transform.GetComponentInChildren(typeof(Notepad)) as Notepad;
-        if (notepad != null)
+        if (file.name == "RECOVERY_TOOL.bat")
         {
-            notepad.OpenFile(file.name, GetFileData(file.name));
+            recovery.SetActive(true);
+            string dump = "C[0] 01 23 45 67 89 AB CD EF\n" +
+                          $"C[1] <color=#FFFF00>1A</color> 33 44 55 66 77 88 99\n" +
+                          "C[2] 11 22 33 44 55 66 77 88 99\n" +
+                          "C[3] 11 22 33 44 55 66 77 88 99\n" +
+                          "C[4] 11 22 33 44 55 66 77 88 99\n" +
+                          $"C[5] <color=#FFFF00>4B</color> 11 22 33 44 55 66 77\n" +
+                          "C[6] 11 22 33 44 55 66 77 88 99\n" +
+                          $"C[7] <color=#FFFF00>22</color> 11 22 33 44 55 66 77";
+
+            dumpText.text = dump;
+            recoveryInput.text = "";
+            instructionText.text = sceneController.localizationManager.GetText("decryptInstruction");
+        }
+        else
+        {
+            Debug.Log("Открываем файл: " + file.name);
+            if (notepadsapplayer == null) return;
+            notepadsapplayer.Show();
+            Notepad notepad = notepadsapplayer.transform.GetComponentInChildren(typeof(Notepad)) as Notepad;
+            if (notepad != null)
+            {
+                notepad.OpenFile(file.name, GetFileData(file.name));
+            }
+            else
+            {
+                print("Блокнота нет");
+            }
         }
     }
 

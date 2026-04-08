@@ -9,6 +9,7 @@ public class SceneController : MonoBehaviour
     public bool typing = false;
     public bool space = false;
     public LocalizationManager localizationManager;
+    public bool recoveryFound = false;
 
     public float delay = 0.2f;
     public GameObject characterTextGO;
@@ -69,15 +70,40 @@ public class SceneController : MonoBehaviour
             StartCoroutine(TypeText(localizationManager.GetText("firstPasswordSpeech6")));
             while (laptop.state != Laptop.State.Unlock) yield return new WaitForEndOfFrame();
             yield return new WaitForSeconds(4);
-            StartCoroutine(TypeText("qw"));
+            StartCoroutine(TypeText(localizationManager.GetText("firstPasswordSpeech7")));
+            while (!Input.GetKey(KeyCode.Space)) yield return new WaitForEndOfFrame();
+            characterTextGO.SetActive(false);
+            characterText.text = string.Empty;
+            state = "freeswimming";
+        }
+        if (state == "freeswimming")
+        {
+            while (!recoveryFound) yield return new WaitForEndOfFrame();
 
         }
+    }
+
+    public void reboot()
+    {
+        StartCoroutine(Reboot());
+    }
+
+    public IEnumerator Reboot()
+    {
+        laptop.state = Laptop.State.Off;
+        laptop.btnFlag = true;
+        yield return new WaitForSeconds(2);
+        laptop.starting.SetActive(true);
+        yield return new WaitForSeconds(4);
+        laptop.state = Laptop.State.Unlock;
+        laptop.btnFlag = false;
+        laptop.starting.SetActive(false);
+        recoveryFound = true;
     }
 
 
     private IEnumerator TypeText(string text)
     {
-        print(text); print("typing");
         typing = true;
         laptop.btnFlag = true;
         characterText.text = "";
@@ -96,6 +122,7 @@ public class SceneController : MonoBehaviour
                 break;
             }
         }
+        space = true;
         typing = false;
         laptop.btnFlag = false;
     }
