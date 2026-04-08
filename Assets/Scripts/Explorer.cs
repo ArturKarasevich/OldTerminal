@@ -121,21 +121,11 @@ public class Explorer : MonoBehaviour
         {
             // Папка "Мысли заметки идеи"
 
-            case "Alps_trip.txt":
-                return "Посмотрел туры в Альпы на декабрь. Шамони, Монблан… Ценник конский, но если закрою бонус за Атлас должно хватить.\n\n" +
-                       "Upd: Дмитрий Анатольевич сегодня зашел, похлопал по плечу: \"Егор, проект горит, какой отпуск?\". " +
-                       "Это уже третий раз. Третий год я никуда не лечу из-за косяков Макса и \"срочных патчей\". " +
-                       "Альпы я увижу только в браузере. Кажется, я так и застряну в этом офисном кресле, так и не дойдя до вершины. Слов нет.";
-
             case "room_sania.txt":
-                return "Зашел к Сане. Планировка один в один как у меня. Те же 4 стены. Но как-то у него живее что ли…\n\n" +
-                       "Стою в дверях и чувствую, что стены будто давят. Говорю: \"Сань, тут же тесно\", а он взгляд на меня поднял и ответил: \"Мне в самый раз\".\n\n" +
-                       "Upd: А еще у него кот всегда за ноутом лежит.";
+                return "Заходил к Сане. \nКомната почти такая же по размеру. \nУ меня все как склад. \nУ него будто там жизнь. \nСказал что ему \"в самый раз\". \n…\nКот опять лег за ноутом.";
 
             case "system_garbage.txt":
-                return "Макс – сверхразум. Опять залил битый мерж, все упало. Весь день чистил за ним логи. " +
-                       "Олег орет, что сроки просраны, а Макс в это время заказывает пиццу и рассуждает о «свободном искусстве кода». " +
-                       "Иногда мне кажется, что я работаю не с программистом, а с генератором случайных проблем.";
+                return "Макс опять залил \"идеальный\" софт.\nВ итоге: битая сборка, мусор в логах, два часа на поиск, еще полдня на чистку.\nОн еще говорит что локально у него все работало.\nДмитрий пишет про сроки. Очень вовремя.";
 
             case "Access_logic.bat":
                 return "Executing logic check...\n" +
@@ -163,7 +153,11 @@ public class Explorer : MonoBehaviour
                 return "Я всегда думал, что однажды станет легче. Вот дожму релиз - станет легче. Выбью отгул - станет легче. Закрою квартал - станет легче. Вот уйду - станет легче.\r\nА потом понял одну неприятную вещь. Если внутри тебя что-то треснуло место не всегда виновато.\r\nИногда ты уносишь эту усталость с собой. Из офиса - домой. Из дома - в метро. Из метро - в сон.\r\nИз сна - в утро. И все что у тебя по-настоящему осталось это либо наконец признать что так больше нельзя\r\nили верить в то, что еще немного и все наладится.\r\n";
             case "na_kurilke.txt":
                 return "Я не курю, но иногда все равно выхожу к курилке. Потому что, это пожалуй самое\r\nчестное место в офисе. На совещаниях все бодрые, собранные, правильные. Обсуждают планы,\r\nрост, цели. А здесь... Здесь никто ничего не доказывает. Здесь дизайнер устал от бесконечных правок.\r\nТестировщик уже заранее не верит в новый билд. Кто-то говорит \"да все нормально\", и \r\nсразу понятно, что совсем не нормально. Это странное место. Здесь почти никто не улыбается,\r\nзато почти никто и не притворяется.\r\nНаверное поэтому мне здесь легче. Потому что это единственное место в офисе, где перестают играть.";
-            // Файлы из папки "Битые файлы"
+
+            case "Alps_trip.txt":
+                return "Если в этот раз реально выплатят, должно хватить.\r\nБез шика но хватить.\r\nТретий год одно и тоже:\r\n-Проект горит\r\n-Вот только не сейчас\r\n-Срочные правки\r\nИ потом ты никуда не едешь.\r\nНадо хотя бы раз уехать нормально.\r\nБез ноутбука.";
+
+             // Файлы из папки "Битые файлы"
 
             case "12.07.2019.png":
             case "C++ libraly.pdf":
@@ -212,29 +206,55 @@ public class Explorer : MonoBehaviour
 
         FileNode users = new FileNode("Users", NodeType.Folder, rootC);
         rootC.children.Add(users);
-        FileNode desktop = new FileNode("Desktop", NodeType.Folder, users);
-        users.children.Add(desktop);
+        FileNode egor = new FileNode("Egor", NodeType.Folder, rootC);
+        users.children.Add(egor);
+        FileNode desktop = new FileNode("Desktop", NodeType.Folder, egor); 
+        egor.children.Add(desktop);
         desktop.children.Add(new FileNode("cmd.bat", NodeType.File, desktop));
         desktop.children.Add(new FileNode("nochnoy_commit.txt", NodeType.File, desktop));
         desktop.children.Add(new FileNode("README_ME_FIRST.txt", NodeType.File, desktop));
 
-        FileNode documents = new FileNode("Documents", NodeType.Folder, users);
-        users.children.Add(documents);
-        FileNode notes = new FileNode("Notes", NodeType.Folder, documents);
-        documents.children.Add(notes);
-        notes.children.Add(new FileNode("na_krishe_doma_tvoego.txt", NodeType.File, notes));
-        notes.children.Add(new FileNode("atlas_present.txt", NodeType.File, notes));
-        notes.children.Add(new FileNode("pismo_v_korzine.txt", NodeType.File, notes));
-        notes.children.Add(new FileNode("zloy1.txt", NodeType.File, notes));
-        notes.children.Add(new FileNode("zloy2.txt", NodeType.File, notes));
+        FileNode documents = new FileNode("Documents", NodeType.Folder, egor);
+        egor.children.Add(documents);
+        FileNode notesC = new FileNode("Notes", NodeType.Folder, documents);
+        documents.children.Add(notesC);
+        notesC.children.Add(new FileNode("na_krishe_doma_tvoego.txt", NodeType.File, notesC));
+        notesC.children.Add(new FileNode("atlas_present.txt", NodeType.File, notesC));
+        notesC.children.Add(new FileNode("pismo_v_korzine.txt", NodeType.File, notesC));
+        notesC.children.Add(new FileNode("zloy1.txt", NodeType.File, notesC));
+        notesC.children.Add(new FileNode("zloy2.txt", NodeType.File, notesC));
         FileNode work = new FileNode("Work", NodeType.Folder, documents);
-        documents.children.Add(notes);
-        notes.children.Add(new FileNode("game1.exe", NodeType.File, notes));
+        documents.children.Add(work);
+        work.children.Add(new FileNode("game1.exe", NodeType.File, work));
 
-        FileNode trashbox = new FileNode("Корзина", NodeType.Folder, rootC);
-        trashbox.children.Add(new FileNode("uvolnenie.txt", NodeType.File, trashbox));  
-        rootC.children.Add(trashbox);
-        rootC.children.Add(new FileNode("nochnoy_commit.txt", NodeType.File, rootC));
+        FileNode downloads = new FileNode("Downloads", NodeType.Folder, egor);
+        egor.children.Add(downloads);
+        downloads.children.Add(new FileNode("shamoni_prices.html", NodeType.File, downloads));
+        downloads.children.Add(new FileNode("montblanc_routes.pdf", NodeType.File, downloads));
+
+        FileNode pictures = new FileNode("Pictures", NodeType.Folder, egor);
+        egor.children.Add(pictures);
+        pictures.children.Add(new FileNode("my_school_reward.jpg", NodeType.File, downloads));
+        pictures.children.Add(new FileNode("game2.exe", NodeType.File, downloads));
+
+        FileNode trashbox = new FileNode("Корзина", NodeType.Folder, egor);
+        trashbox.children.Add(new FileNode("uvolnenie.txt", NodeType.File, trashbox));
+        egor.children.Add(trashbox);
+        FileNode appdata = new FileNode("AppData", NodeType.Folder, egor);
+        egor.children.Add(appdata);
+        FileNode local = new FileNode("Local", NodeType.Folder, appdata);
+        appdata.children.Add(local);
+        FileNode terminalcache = new FileNode("TerminalCache", NodeType.Folder, local);
+        local.children.Add(terminalcache);
+        terminalcache.children.Add(new FileNode("cmd_history.log", NodeType.File, terminalcache));
+        terminalcache.children.Add(new FileNode("game3.exe", NodeType.File, terminalcache));
+        FileNode roaming = new FileNode("Roaming", NodeType.Folder, appdata);
+        appdata.children.Add(roaming);
+        FileNode atlasshell = new FileNode("AtlasShell", NodeType.Folder, roaming);
+        roaming.children.Add(atlasshell);
+        atlasshell.children.Add(new FileNode("last_login.cfg", NodeType.File, atlasshell));
+
+
         rootC.children.Add(new FileNode("ot_sebia.txt", NodeType.File, rootC));
         rootC.children.Add(new FileNode("na_kurilke.txt", NodeType.File, rootC));
 

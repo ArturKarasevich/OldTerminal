@@ -15,7 +15,7 @@ public class Messenger : MonoBehaviour
     private TextMeshProUGUI leftChoiceText, rightChoiceText;
 
     private readonly string[] chatList = {
-        "Макс", "Саня", "Мама", "Олег", "Sushi&Pizza", "Ольга Владимировна", "Атлас/main", "Дмитрий Анатольевич"
+        "Избранное", "Макс", "Саня", "Мама", "Олег", "Sushi&Pizza", "Ольга Владимировна", "Атлас/main", "Дмитрий Анатольевич"
     };
 
     private Dictionary<string, List<MessageData>> chatHistory = new Dictionary<string, List<MessageData>>();
