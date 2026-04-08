@@ -16,10 +16,13 @@
         "firstPasswordSpeech0": "Пароль. Ну да.",
         "firstPasswordSpeech1": "...",
         "firstPasswordSpeech2": "У него был пароль даже на заметках. Хотя,там скорее всего опять какая-нибудь ,ерунда.",
-        "firstPasswordSpeech3": "…",
+        "firstPasswordSpeech3": "...",
         "firstPasswordSpeech4": "Что ты туда ставил обычно... Не работа. Не кот.",
         "firstPasswordSpeech5": "Блин. Да ладно. Ты ведь уже делал эту глупость. День рождения Цоя.",
-        "firstPasswordSpeech6": "21061962"
+        "firstPasswordSpeech6": "21061962",
+        "firstPasswordSpeech7": "Надо полазить по ноуту",
+        "decryptInstruction": "Рассчитайте сумму <color=#FFFF00>выделенных</color> HEX-значений и введите ее в десятичном формате.",
+        "decryptInstructionIfWA": "Ответ не верный. Рассчитайте сумму <color=#FFFF00>выделенных</color> HEX-значений и введите ее в десятичном формате."
 
     },
 
