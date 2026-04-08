@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using NaughtyAttributes;
 using UnityEditor;
+using TMPro;
 
 public class AppLayer : MonoBehaviour
 {
@@ -9,7 +10,6 @@ public class AppLayer : MonoBehaviour
     public bool active;
     public bool fullscreen;
     GameObject detectPanel;
-    GameObject panel = null;
     public Sprite circleSprite; 
     
     public Texture2D horizontalCursor;
@@ -29,6 +29,7 @@ public class AppLayer : MonoBehaviour
 
     public Sprite background;
     public Font font;
+    public TMP_FontAsset tmp_font;
 
     public enum AppType 
     {
@@ -111,7 +112,7 @@ public class AppLayer : MonoBehaviour
                 var messenger = panel.GetComponent<Messenger>();
                 messenger.appLayer = GetComponent<AppLayer>();
                 //messenger.buttonPrefab = buttonPrefab2;
-                //messenger.font = font;
+                messenger.font = tmp_font;
 
                 var image = panel.GetComponent<Image>();
                 image.sprite = background;
@@ -141,7 +142,7 @@ public class AppLayer : MonoBehaviour
                 var messenger = panel.GetComponent<Notepad>();
                 messenger.appLayer = GetComponent<AppLayer>();
                 //messenger.buttonPrefab = buttonPrefab2;
-                //messenger.font = font;
+                messenger.font = tmp_font;
 
                 var image = panel.GetComponent<Image>();
                 image.sprite = background;

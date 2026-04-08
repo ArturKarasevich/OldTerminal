@@ -22,6 +22,8 @@ public class Messenger : MonoBehaviour
     private string activeChat = "";
     private bool maxDialogueStarted = false;
 
+    public TMP_FontAsset font;
+
     private class MessageData
     {
         public string sender;
@@ -215,7 +217,7 @@ public class Messenger : MonoBehaviour
         Stretch(go.GetComponent<RectTransform>());
         var t = go.GetComponent<TextMeshProUGUI>();
         t.text = content; t.fontSize = size; t.color = Color.white;
-        t.font = TMP_Settings.defaultFontAsset;
+        t.font = font;
         return t;
     }
 

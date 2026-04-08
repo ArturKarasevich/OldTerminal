@@ -7,14 +7,11 @@ public class Notepad : MonoBehaviour
     public AppLayer appLayer;
     private TextMeshProUGUI titleText;
     private TMP_InputField inputField;
-
-    void Awake()
-    {
-        BuildUI();
-    }
-
+    public TMP_FontAsset font;
+    
     void Start()
     {
+        BuildUI();
         if (appLayer != null)
         {
             appLayer.sizeDelta = new Vector2(600, 400);
@@ -36,17 +33,19 @@ public class Notepad : MonoBehaviour
 
         GameObject header = new GameObject("Header", typeof(RectTransform), typeof(Image));
         header.transform.SetParent(main.transform, false);
-        header.GetComponent<Image>().color = new Color(0.8f, 0.8f, 0.8f);
+        header.GetComponent<Image>().color = new Color(0.31f, 0.31f, 0.31f);
         header.AddComponent<LayoutElement>().preferredHeight = 20;
 
-        titleText = CreateTMPText("Новый текстовый документ.txt", header.transform, 12, Color.black);
+        titleText = CreateTMPText("Новый текстовый документ.txt", header.transform, 20, Color.white);
         titleText.alignment = TextAlignmentOptions.Left;
         titleText.rectTransform.offsetMin = new Vector2(5, 0);
+        titleText.font = font;
 
 
 
         GameObject scrollGo = new GameObject("TextScroll", typeof(RectTransform), typeof(ScrollRect), typeof(Image));
         scrollGo.transform.SetParent(main.transform, false);
+        scrollGo.GetComponent<Image>().color = new Color(0.15f, 0.15f, 0.15f);
         scrollGo.AddComponent<LayoutElement>().flexibleHeight = 1;
 
         GameObject inputGo = new GameObject("InputField", typeof(RectTransform), typeof(TMP_InputField));
@@ -68,8 +67,9 @@ public class Notepad : MonoBehaviour
         Stretch(textDisplay.GetComponent<RectTransform>());
 
         var t = textDisplay.GetComponent<TextMeshProUGUI>();
-        t.color = Color.black;
-        t.fontSize = 14;
+        t.color = Color.white;
+        t.fontSize = 25;
+        t.font = font;
 
         inputField.textViewport = textArea.GetComponent<RectTransform>();
         inputField.textComponent = t;
@@ -89,7 +89,7 @@ public class Notepad : MonoBehaviour
         Stretch(go.GetComponent<RectTransform>());
         var t = go.GetComponent<TextMeshProUGUI>();
         t.text = content; t.fontSize = size; t.color = col;
-        t.font = TMP_Settings.defaultFontAsset;
+        t.font = font;
         return t;
     }
 
