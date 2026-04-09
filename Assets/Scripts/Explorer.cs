@@ -32,6 +32,7 @@ public class Explorer : MonoBehaviour
     public GameObject errorMsg;
     public GameObject succesMsg;
     public GameObject accessDenied;
+    public GameObject hackPanel;
 
 
     public AppLayer notepadsapplayer;
@@ -54,6 +55,7 @@ public class Explorer : MonoBehaviour
 
     void Start()
     {
+        hackPanel.SetActive(false);
         accessDenied.SetActive(false);
         recovery.SetActive(false);
         errorMsg.SetActive(false);
@@ -185,6 +187,10 @@ public class Explorer : MonoBehaviour
             recoveryInput.text = "";
             instructionText.text = sceneController.localizationManager.GetText("decryptInstruction");
         }
+        else if (file.name == "game1.exe")
+        {
+            hackPanel.SetActive(true);
+        }
         else
         {
             Debug.Log("Открываем файл: " + file.name);
@@ -207,6 +213,12 @@ public class Explorer : MonoBehaviour
         switch (fileName)
         {
             // Папка "Мысли заметки идеи"
+
+            case "present_investor.txt":
+                return "Если ATLAS снова не запускается через ярлык - открывай его вручную.\r\nПосле последнего переноса обычный запуск часто падает.\r\nЧерез командную строку работает стабильнее.\r\nПуть:\r\nC:\\Users\\egor\\ATLAS\\\r\nЕсли не помнишь команды - напиши:\r\nhelp\r\nЕсли все нормально - клиент поднимется и откроется как надо.";
+
+            case "README. txt":
+                return "Добрый день.\r\n\r\nМеня зовут Егор, и я представляю ATLAS — облачную платформу нового поколения для хранения, восстановления и интеллектуальной организации пользовательских данных.\r\n\r\nСегодня цифровая жизнь человека разбросана между десятками сервисов.\r\nФайлы — в одном месте.\r\nФотографии — в другом.\r\nДокументы — в третьем.\r\nПереписки и резервные копии — вообще за пределами доступа.\r\n\r\nПроблема не в нехватке хранилищ.\r\nПроблема в отсутствии целостности.\r\n\r\nATLAS создается как единая система, в которой данные не просто лежат на сервере, а связаны между собой и доступны как единая история.\r\n\r\nМы объединяем:\r\n— облачное хранение файлов\r\n— интеллектуальную индексацию\r\n— восстановление удаленных и поврежденных данных\r\n— безопасный доступ к архивам переписок\r\n— систему резервного возврата к важной информации\r\n\r\nДля пользователя это означает простую вещь:\r\nон больше не ищет «где лежит нужный файл».\r\nОн возвращается к любому моменту своей цифровой жизни.\r\n\r\nНаша цель — превратить хранение данных из пассивной функции в активный инструмент.\r\nИменно это мы строим в ATLAS.";
 
             case "room_sania.txt":
                 return "Заходил к Сане. \nКомната почти такая же по размеру. \nУ меня все как склад. \nУ него будто там жизнь. \nСказал что ему \"в самый раз\". \n…\nКот опять лег за ноутом.";
@@ -316,13 +328,13 @@ public class Explorer : MonoBehaviour
 
         FileNode downloads = new FileNode("Downloads", NodeType.Folder, egor);
         egor.children.Add(downloads);
+        downloads.children.Add(new FileNode("present_investor.txt", NodeType.File, downloads));
         downloads.children.Add(new FileNode("shamoni_prices.html", NodeType.File, downloads));
         downloads.children.Add(new FileNode("montblanc_routes.pdf", NodeType.File, downloads));
 
         FileNode pictures = new FileNode("Pictures", NodeType.Folder, egor);
         egor.children.Add(pictures);
         pictures.children.Add(new FileNode("my_school_reward.jpg", NodeType.File, downloads));
-        pictures.children.Add(new FileNode("game2.exe", NodeType.File, downloads));
 
         FileNode trashbox = new FileNode("Корзина", NodeType.Folder, egor);
         trashbox.children.Add(new FileNode("uvolnenie.txt", NodeType.File, trashbox));
@@ -334,7 +346,6 @@ public class Explorer : MonoBehaviour
         FileNode terminalcache = new FileNode("TerminalCache", NodeType.Folder, local);
         local.children.Add(terminalcache);
         terminalcache.children.Add(new FileNode("cmd_history.log", NodeType.File, terminalcache));
-        terminalcache.children.Add(new FileNode("game3.exe", NodeType.File, terminalcache));
         FileNode roaming = new FileNode("Roaming", NodeType.Folder, appdata);
         appdata.children.Add(roaming);
         FileNode atlasshell = new FileNode("AtlasShell", NodeType.Folder, roaming);

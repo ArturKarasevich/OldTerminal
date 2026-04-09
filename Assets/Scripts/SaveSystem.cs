@@ -191,7 +191,8 @@ public static class SaveSystem
 [System.Serializable]
 public class GameSettings
 {
-    public float textSpeed = 0.001f;
+    public float textSpeed = 0.02f;
+    public float brightness = 0f;
     public string lang = "ru";
 }
 

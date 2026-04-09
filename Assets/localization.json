@@ -8,6 +8,16 @@
         "language": "Язык",
         "slotName": "Слот сохранения",
         "autosaveName": "Автосохранение",
+        "rezolution": "Разрешение",
+        "fullscreen": "Полноэкранный",
+        "windowed": "Оконный",
+        "brightness": "Яркость",
+        "back": "Назад",
+        "continueGame": "Продолжить игру",
+        "newGame": "Новая игра",
+        "savedGame": "Сохранения",
+        "settings": "Настройки",
+        "exit": "Выход",
 
         "wrongpassword": "Неверный пароль",
         "enterpassword": "Введите пароль",
@@ -22,8 +32,11 @@
         "firstPasswordSpeech6": "21061962",
         "firstPasswordSpeech7": "Надо полазить по ноуту",
         "decryptInstruction": "Рассчитайте сумму <color=#FFFF00>выделенных</color> HEX-значений и введите ее в десятичном формате.",
-        "decryptInstructionIfWA": "Ответ не верный. Рассчитайте сумму <color=#FFFF00>выделенных</color> HEX-значений и введите ее в десятичном формате."
+        "decryptInstructionIfWA": "Ответ не верный. Рассчитайте сумму <color=#FFFF00>выделенных</color> HEX-значений и введите ее в десятичном формате.",
 
+        "hackInstruction": "HACK: Введите последовательность узлов для обхода защиты.",
+        "nodeSynced": "Узел синхронизирован.",
+        "nodeFailure": "Синхронизация провалена. Сброс последовательности."
     },
 
 
@@ -38,10 +51,24 @@
         "language": "Language",
         "slotName": "Save Slot",
         "autosaveName": "Autosave",
+        "rezolution": "Rezolution",
+        "fullscreen": "Fullscreen",
+        "windowed": "Windowed",
+        "brightness": "Brightness",
+        "back": "Back",
+        "continueGame": "Continue Game",
+        "newGame": "New Game",
+        "savedGame": "Saves",
+        "settings": "Settings",
+        "exit": "Exit",
 
         "wrongpassword": "Wrong password",
         "enterpassword": "Enter password",
         "succesfullogin": "Succesfull log in",
-        "login": "Log in"
+        "login": "Log in",
+
+        "hackInstruction": "HACK: Enter the node sequence to bypass the security.",
+        "nodeSynced": "Node synchronized.",
+        "nodeFailure": "Synchronization failed. Resetting sequence."
     }
 }

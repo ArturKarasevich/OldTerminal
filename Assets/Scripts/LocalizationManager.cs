@@ -7,7 +7,7 @@ using System;
 public class LocalizationManager : MonoBehaviour
 {
     public string defaultLanguage = "ru";
-    private string currentLanguage;
+    public string currentLanguage;
 
     private Dictionary<string, Dictionary<string, string>> localizedText;
 
